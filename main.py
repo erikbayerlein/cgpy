@@ -6,6 +6,7 @@ from draw.draw import Draw
 from draw.polygon.polygon import Polygon
 from draw.polygon.texture_polygon import TexturePolygon
 from screen.create_screen import create_screen
+from transformations.transformations import Transformations
 
 
 pygame.init()
@@ -37,8 +38,14 @@ cat = TexturePolygon(
     ]
 )
 
-Texture.scanline_with_texture(screen, cat, cat_texture)
+transform_cat = Transformations.create_transformation_matrix()
+transform_cat = Transformations.compose_rotation(transform_cat, 10)
+#transform_cat = Transformations.compose_translation(transform_cat, 50, 50)
+#transform_cat = Transformations.compose_scale(transform_cat, 2, 1)
 
+cat = Transformations.apply_transformation(cat, transform_cat)
+
+Texture.scanline_with_texture(screen, cat, cat_texture)
 
 running = True
 while running:
