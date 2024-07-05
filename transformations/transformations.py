@@ -74,7 +74,6 @@ class Transformations:
         )
 
 
-
     def apply_transformation(polygon, matrix):
         points = []
 
