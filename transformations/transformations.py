@@ -61,6 +61,19 @@ class Transformations:
         )
 
 
+    def compose_shear(matrix, cx, cy):
+        return (
+            np.array(
+                [
+                    [1, cx, 0],
+                    [cy, 1, 0],
+                    [0, 0, 1]
+                ]
+            )
+            @ matrix
+        )
+
+
 
     def apply_transformation(polygon, matrix):
         points = []
